@@ -1,39 +1,13 @@
-import SEO from "@/components/SEO";
-import Hero from "@/components/Hero";
-import { products } from "@/data/products";
-import ProductCard from "@/components/products/ProductCard";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+// Update this page (the content is just a fallback if you fail to update the page)
 
 const Index = () => {
-  const featured = products.slice(0, 6);
   return (
-    <main>
-      <SEO
-        title="Clarity & Care — Discover Your Path to Wellness"
-        description="Explore trusted pharmaceutical products like Ozempic, Mounjaro, Adderall and more. Learn benefits, dosages, and guidance."
-      />
-      <Hero />
-
-      <section className="container mx-auto py-12">
-        <header className="mb-8">
-          <h2 className="text-2xl font-semibold">Featured Products</h2>
-          <p className="mt-1 text-muted-foreground">
-            A curated selection to help you get started.
-          </p>
-        </header>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p) => (
-            <ProductCard key={p.slug} product={p} />
-          ))}
-        </div>
-        <div className="mt-8 text-center">
-          <Button asChild variant="hero">
-            <Link to="/products" className="hover-scale">View All Products</Link>
-          </Button>
-        </div>
-      </section>
-    </main>
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
+        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+      </div>
+    </div>
   );
 };
 
