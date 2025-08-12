@@ -41,6 +41,7 @@ const ProductDetail = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold">{product.name}</h1>
+            <p className="mt-2 text-3xl font-bold text-primary">£{product.price}</p>
             <p className="mt-3 text-muted-foreground">{product.description}</p>
             <div className="mt-6 grid gap-6">
               <section>
@@ -84,11 +85,22 @@ const ProductDetail = () => {
               </section>
             </div>
 
-            <div className="mt-8 flex gap-3">
-              <Button asChild variant="hero">
-                <Link to="/contact">Contact a Provider</Link>
-              </Button>
-              <Button asChild variant="outline">
+            <div className="mt-8 space-y-4">
+              <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
+                <h3 className="font-semibold text-primary mb-2">Payment Information</h3>
+                <p className="text-sm text-muted-foreground mb-3">
+                  We accept Bitcoin payments only. For other payment methods, please contact us.
+                </p>
+                <div className="flex gap-3">
+                  <Button variant="hero" className="flex-1">
+                    Pay with Bitcoin
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link to="/contact">Other Payment Methods</Link>
+                  </Button>
+                </div>
+              </div>
+              <Button asChild variant="soft" className="w-full">
                 <Link to="/products">Back to Products</Link>
               </Button>
             </div>

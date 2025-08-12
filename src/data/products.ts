@@ -3,6 +3,7 @@ export type Product = {
   name: string;
   image: string;
   description: string;
+  price: number;
   ingredients: string[];
   dosage: string;
   benefits: string[];
@@ -27,6 +28,7 @@ export const products: Product[] = [
     slug: "concerta",
     name: "Concerta",
     image: concertaImg,
+    price: 9,
     description:
       "Extended-release methylphenidate to help manage symptoms of ADHD and improve focus.",
     ingredients: ["Methylphenidate hydrochloride"],
@@ -41,6 +43,7 @@ export const products: Product[] = [
     slug: "tilidin-200mg",
     name: "Tilidin 200mg",
     image: tilidinImg,
+    price: 200,
     description:
       "Analgesic used for moderate to severe pain management under medical supervision.",
     ingredients: ["Tilidin"],
@@ -53,6 +56,7 @@ export const products: Product[] = [
     slug: "adderall",
     name: "Adderall",
     image: adderallImg,
+    price: 300,
     description:
       "A combination of amphetamine salts used to treat ADHD, enhancing focus and attention.",
     ingredients: ["Amphetamine", "Dextroamphetamine"],
@@ -65,6 +69,7 @@ export const products: Product[] = [
     slug: "clonazepam",
     name: "Clonazepam",
     image: clonazepamImg,
+    price: 86,
     description:
       "Benzodiazepine indicated for seizure disorders and panic disorder, used as directed.",
     ingredients: ["Clonazepam"],
@@ -79,6 +84,7 @@ export const products: Product[] = [
     slug: "mounjaro",
     name: "Mounjaro",
     image: mounjaroImg,
+    price: 128,
     description:
       "Tirzepatide injection used for glycemic control in adults with type 2 diabetes.",
     ingredients: ["Tirzepatide"],
@@ -93,6 +99,7 @@ export const products: Product[] = [
     slug: "ozempic",
     name: "Ozempic",
     image: ozempicImg,
+    price: 100,
     description:
       "Semaglutide injection to improve blood sugar in adults with type 2 diabetes.",
     ingredients: ["Semaglutide"],
@@ -105,6 +112,7 @@ export const products: Product[] = [
     slug: "oxycontin",
     name: "Oxycontin",
     image: oxycontinImg,
+    price: 6,
     description:
       "Extended-release oxycodone for severe pain requiring around-the-clock opioid treatment.",
     ingredients: ["Oxycodone"],
@@ -117,6 +125,7 @@ export const products: Product[] = [
     slug: "percocet",
     name: "Percocet",
     image: percocetImg,
+    price: 129,
     description:
       "Combination of oxycodone and acetaminophen for moderate to severe pain relief.",
     ingredients: ["Oxycodone", "Acetaminophen"],
@@ -129,6 +138,7 @@ export const products: Product[] = [
     slug: "zolpidem",
     name: "Zolpidem",
     image: zolpidemImg,
+    price: 120,
     description:
       "Sedative-hypnotic used short-term for insomnia, helping initiate sleep.",
     ingredients: ["Zolpidem tartrate"],
@@ -141,6 +151,7 @@ export const products: Product[] = [
     slug: "zopiclone",
     name: "Zopiclone",
     image: zopicloneImg,
+    price: 130,
     description:
       "Non-benzodiazepine hypnotic for short-term insomnia management.",
     ingredients: ["Zopiclone"],
