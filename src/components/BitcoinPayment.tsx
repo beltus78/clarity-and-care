@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Copy, Check, ExternalLink } from "lucide-react";
+import { Copy, Check, ExternalLink, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Product } from "@/data/products";
+import { fetchBitcoinPrice, formatBitcoinAmount, formatCurrency } from "@/lib/crypto";
 
 interface BitcoinPaymentProps {
   product: Product;
@@ -11,14 +12,40 @@ interface BitcoinPaymentProps {
 
 const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
   const [copied, setCopied] = useState(false);
+  const [btcPrice, setBtcPrice] = useState<number>(45000);
+  const [isLoadingPrice, setIsLoadingPrice] = useState(false);
+  const [priceError, setPriceError] = useState(false);
   const { toast } = useToast();
   
   // Bitcoin wallet address - replace with your actual address
   const bitcoinAddress = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
   
-  // Calculate Bitcoin amount (simplified - in real implementation, use live BTC/GBP rates)
-  const btcPrice = 45000; // GBP per BTC (should be fetched from API)
-  const btcAmount = (product.price / btcPrice).toFixed(8);
+  // Calculate Bitcoin amount using live price
+  const btcAmount = formatBitcoinAmount(product.price, btcPrice);
+
+  const loadBitcoinPrice = async () => {
+    setIsLoadingPrice(true);
+    setPriceError(false);
+    try {
+      const price = await fetchBitcoinPrice();
+      setBtcPrice(price);
+      toast({ title: "Bitcoin price updated", description: `Current rate: ${formatCurrency(price)}` });
+    } catch (error) {
+      setPriceError(true);
+      toast({ 
+        title: "Failed to update Bitcoin price", 
+        description: "Using fallback rate",
+        variant: "destructive" 
+      });
+    } finally {
+      setIsLoadingPrice(false);
+    }
+  };
+
+  // Load price on component mount
+  useEffect(() => {
+    loadBitcoinPrice();
+  }, []);
 
   const copyToClipboard = async (text: string) => {
     try {
@@ -50,7 +77,21 @@ const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
           <div className="text-center">
             <h3 className="font-semibold text-lg">{product.name}</h3>
             <p className="text-2xl font-bold text-primary">£{product.price}</p>
-            <p className="text-sm text-muted-foreground">≈ {btcAmount} BTC</p>
+            <div className="flex items-center justify-center gap-2">
+              <p className="text-sm text-muted-foreground">≈ {btcAmount} BTC</p>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={loadBitcoinPrice}
+                disabled={isLoadingPrice}
+                className="h-6 w-6 p-0"
+              >
+                <RefreshCw className={`h-3 w-3 ${isLoadingPrice ? 'animate-spin' : ''}`} />
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              1 BTC = {formatCurrency(btcPrice)} {priceError && "(fallback rate)"}
+            </p>
           </div>
           
           <div className="space-y-3">
@@ -98,6 +139,7 @@ const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
               <p>• Payment will be confirmed within 10-60 minutes</p>
               <p>• Contact us after payment for order tracking</p>
               <p>• Network fees apply (usually 0.0001-0.001 BTC)</p>
+              <p>• Prices updated from live market rates</p>
             </div>
           </div>
         </div>
