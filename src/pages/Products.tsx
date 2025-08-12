@@ -13,8 +13,8 @@ const Products = () => {
   return (
     <main className="container mx-auto py-10">
       <SEO
-        title="Products — Clarity & Care"
-        description="Browse trusted pharmaceutical products including Concerta, Tilidin, Adderall, Clonazepam, Mounjaro, Ozempic, Oxycontin, Percocet, Zolpidem, and Zopiclone."
+        title="Products — Pills4Sale UK"
+        description="Browse premium pharmaceutical products including Concerta, Tilidin, Adderall, Clonazepam, Mounjaro, Ozempic, Oxycontin, Percocet, Zolpidem, and Zopiclone."
       />
       <header className="mb-8">
         <h1 className="text-3xl font-bold">Products</h1>

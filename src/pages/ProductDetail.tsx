@@ -24,7 +24,7 @@ const ProductDetail = () => {
     name: product.name,
     description: product.description,
     image: product.image,
-    brand: { "@type": "Brand", name: "Clarity & Care" },
+    brand: { "@type": "Brand", name: "Pills4Sale UK" },
   };
 
   return (

@@ -20,8 +20,8 @@ export const Header = () => {
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-md bg-primary/10 ring-1 ring-primary/20" />
-          <span className="text-lg font-semibold">Clarity & Care</span>
+          <img src="/src/assets/logo.png" alt="Pills4Sale UK" className="h-8 w-auto" />
+          <span className="text-lg font-semibold">Pills4Sale UK</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">

@@ -10,8 +10,8 @@ const Index = () => {
   return (
     <main>
       <SEO
-        title="Clarity & Care — Discover Your Path to Wellness"
-        description="Explore trusted pharmaceutical products like Ozempic, Mounjaro, Adderall and more. Learn benefits, dosages, and guidance."
+        title="Pills4Sale UK — Premium Pharmaceutical Products"
+        description="Buy trusted pharmaceutical products like Ozempic, Mounjaro, Adderall and more in the UK. Secure Bitcoin payments, fast delivery."
       />
       <Hero />
 

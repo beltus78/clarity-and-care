@@ -6,9 +6,9 @@ const Footer = () => {
     <footer className="mt-16 border-t bg-background">
       <div className="container mx-auto grid gap-8 py-10 md:grid-cols-3">
         <div>
-          <h3 className="text-lg font-semibold">Clarity & Care</h3>
+          <h3 className="text-lg font-semibold">Pills4Sale UK</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            Trusted information and products to support your wellness journey.
+            Trusted pharmaceutical products delivered across the UK.
           </p>
         </div>
         <nav className="grid grid-cols-2 gap-4 text-sm">
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Clarity & Care. All rights reserved.
+        © {new Date().getFullYear()} Pills4Sale UK. All rights reserved.
       </div>
     </footer>
   );
