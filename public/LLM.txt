@@ -1,0 +1,99 @@
+Website: Pills4Sale UK — Premium Pharmaceutical Products
+URL: https://pills4sale.co.uk
+Type: E-commerce/Pharmaceutical Information Platform
+
+OVERVIEW:
+Pills4Sale UK is a pharmaceutical information and e-commerce platform built with React, TypeScript, and Tailwind CSS. The website provides information about various pharmaceutical products and includes modern web features for user engagement and transactions.
+
+TECHNICAL STACK:
+- Frontend: React 18, TypeScript, Vite
+- Styling: Tailwind CSS with custom design system
+- Routing: React Router DOM
+- Animation: Framer Motion
+- UI Components: Radix UI primitives with shadcn/ui
+- Payment: Bitcoin integration with live price feeds
+- Backend: Supabase integration
+- Live Chat: Tawk.to integration
+
+KEY FEATURES:
+
+1. CRYPTOCURRENCY PAYMENT SYSTEM:
+- Bitcoin payment integration with real-time BTC/GBP exchange rates
+- Live price feeds from CoinGecko API
+- Payment dialog with Bitcoin address and QR code functionality
+- Blockchain explorer links for transaction verification
+- Copy-to-clipboard functionality for Bitcoin addresses
+
+2. PRODUCT CATALOG:
+- Comprehensive product listings with detailed information
+- Categories include ADHD medications, diabetes treatments, pain management, sleep aids
+- Product detail pages with specifications and pricing
+- Image galleries with optimized loading
+
+3. CONTENT MANAGEMENT:
+- SEO-optimized blog with pharmaceutical articles
+- Internal and external linking strategy
+- Structured content with proper meta tags
+- Sitemap.xml and robots.txt for search engine optimization
+
+4. USER EXPERIENCE:
+- Responsive design optimized for all device sizes
+- Dark/light theme support
+- Smooth animations and transitions
+- Live chat support via Tawk.to
+- Professional UI components with consistent design system
+
+5. SEO AND PERFORMANCE:
+- Comprehensive meta tags for social sharing
+- Open Graph and Twitter Card integration
+- Optimized images with proper alt attributes
+- Semantic HTML structure
+- Fast loading with Vite build system
+
+6. PAGES STRUCTURE:
+- Homepage with hero section and featured products
+- Products catalog with filtering and search
+- Individual product detail pages
+- About Us page with company information and team details
+- Blog section with pharmaceutical articles
+- Contact page with support information
+- Bitcoin payment integration
+
+7. DESIGN SYSTEM:
+- Custom Tailwind configuration with semantic color tokens
+- HSL color system for consistent theming
+- Reusable UI components based on Radix UI
+- Typography scale with Inter font family
+- Responsive breakpoints and spacing system
+
+8. SECURITY AND COMPLIANCE:
+- Secure Bitcoin payment processing
+- Privacy-focused design
+- HTTPS encryption
+- Structured data implementation
+
+NAVIGATION:
+- Header with main navigation menu
+- Footer with additional links and information
+- Breadcrumb navigation on product pages
+- Mobile-responsive navigation menu
+
+INTEGRATIONS:
+- Supabase for backend functionality
+- CoinGecko API for cryptocurrency prices
+- Tawk.to for live customer support
+- React Helmet for dynamic meta tag management
+
+TARGET AUDIENCE:
+- Individuals seeking pharmaceutical product information
+- Users interested in cryptocurrency payment options
+- Healthcare professionals and patients
+- UK-based customers
+
+CONTENT FOCUS:
+- Pharmaceutical product information and education
+- Bitcoin payment tutorials and guides
+- Company transparency and quality assurance
+- Customer support and consultation services
+
+This website represents a modern e-commerce platform with advanced payment integration and comprehensive pharmaceutical product information, built with current web technologies and best practices for performance, SEO, and user experience.
