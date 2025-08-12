@@ -18,7 +18,7 @@ const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
   const { toast } = useToast();
   
   // Bitcoin wallet address - replace with your actual address
-  const bitcoinAddress = "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh";
+  const bitcoinAddress = "bc1qqms7254qj7grpg4yqk0erntcj5npx5j6yq5w4t";
   
   // Calculate Bitcoin amount using live price
   const btcAmount = formatBitcoinAmount(product.price, btcPrice);
