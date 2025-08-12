@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { useMemo } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import BitcoinPayment from "@/components/BitcoinPayment";
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -92,9 +93,7 @@ const ProductDetail = () => {
                   We accept Bitcoin payments only. For other payment methods, please contact us.
                 </p>
                 <div className="flex gap-3">
-                  <Button variant="hero" className="flex-1">
-                    Pay with Bitcoin
-                  </Button>
+                  <BitcoinPayment product={product} />
                   <Button asChild variant="outline">
                     <Link to="/contact">Other Payment Methods</Link>
                   </Button>
