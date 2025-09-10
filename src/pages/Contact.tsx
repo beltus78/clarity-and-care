@@ -17,7 +17,7 @@ const Contact = () => {
     <main className="container mx-auto py-10">
       <SEO title="Contact — Pills4Sale UK" description="Get in touch with our UK team for product questions, payment support, or delivery inquiries." />
       <h1 className="text-3xl font-bold">Contact</h1>
-      <p className="mt-1 text-muted-foreground">Email: support@pills4saleuk.com • Phone: +44 (0) 20 7123 4567</p>
+      <p className="mt-1 text-muted-foreground">Email: support@pills4saleuk.com • Phone: +44 (0) 20 7123 4567 • WhatsApp: +44 7856095887</p>
       <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
         <h2 className="font-semibold text-amber-800">Alternative Payment Methods</h2>
         <p className="mt-1 text-sm text-amber-700">
