@@ -1,13 +1,15 @@
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import BitcoinPayment from "@/components/BitcoinPayment";
+import QuantitySelector from "@/components/products/QuantitySelector";
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
   const product = useMemo(() => products.find((p) => p.slug === slug), [slug]);
 
   if (!product) {
@@ -44,6 +46,13 @@ const ProductDetail = () => {
             <h1 className="text-3xl font-bold">{product.name}</h1>
             <p className="mt-2 text-3xl font-bold text-primary">£{product.price}</p>
             <p className="mt-3 text-muted-foreground">{product.description}</p>
+            
+            <div className="mt-4">
+              <QuantitySelector 
+                quantity={quantity} 
+                onQuantityChange={setQuantity}
+              />
+            </div>
             <div className="mt-6 grid gap-6">
               <section>
                 <h2 className="font-semibold">Dosage</h2>
