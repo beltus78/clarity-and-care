@@ -7,11 +7,12 @@ import { Product } from "@/data/products";
 import { fetchBitcoinPrice, formatBitcoinAmount, formatCurrency } from "@/lib/crypto";
 
 interface BitcoinPaymentProps {
-  product: Product;
+  product?: Product;
   quantity?: number;
+  cartItems?: Array<{product: Product; quantity: number}>;
 }
 
-const BitcoinPayment = ({ product, quantity = 1 }: BitcoinPaymentProps) => {
+const BitcoinPayment = ({ product, quantity = 1, cartItems }: BitcoinPaymentProps) => {
   const [copied, setCopied] = useState(false);
   const [btcPrice, setBtcPrice] = useState<number>(45000);
   const [isLoadingPrice, setIsLoadingPrice] = useState(false);
@@ -22,7 +23,9 @@ const BitcoinPayment = ({ product, quantity = 1 }: BitcoinPaymentProps) => {
   const bitcoinAddress = "bc1qqefxjzllyzy550cs249dlsn9rq5c5xd4mr8l9z";
   
   // Calculate Bitcoin amount using live price and quantity
-  const totalPrice = product.price * quantity;
+  const totalPrice = cartItems 
+    ? cartItems.reduce((sum, item) => sum + (item.product.price * item.quantity), 0)
+    : product ? product.price * quantity : 0;
   const btcAmount = formatBitcoinAmount(totalPrice, btcPrice);
 
   const loadBitcoinPrice = async () => {
@@ -77,9 +80,20 @@ const BitcoinPayment = ({ product, quantity = 1 }: BitcoinPaymentProps) => {
         </DialogHeader>
         <div className="space-y-4">
           <div className="text-center">
-            <h3 className="font-semibold text-lg">{product.name}</h3>
-            {quantity > 1 && <p className="text-sm text-muted-foreground">Quantity: {quantity}</p>}
-            <p className="text-2xl font-bold text-primary">£{totalPrice}</p>
+            {cartItems ? (
+              <>
+                <h3 className="font-semibold text-lg">Order Total</h3>
+                <p className="text-sm text-muted-foreground">
+                  {cartItems.reduce((sum, item) => sum + item.quantity, 0)} items
+                </p>
+              </>
+            ) : product ? (
+              <>
+                <h3 className="font-semibold text-lg">{product.name}</h3>
+                {quantity > 1 && <p className="text-sm text-muted-foreground">Quantity: {quantity}</p>}
+              </>
+            ) : null}
+            <p className="text-2xl font-bold text-primary">£{totalPrice.toFixed(2)}</p>
             <div className="flex items-center justify-center gap-2">
               <p className="text-sm text-muted-foreground">≈ {btcAmount} BTC</p>
               <Button

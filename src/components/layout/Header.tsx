@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { ShoppingBag, Menu } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import CartIcon from "@/components/cart/CartIcon";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -39,6 +40,7 @@ export const Header = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <CartIcon />
           <Button variant="soft" asChild>
             <Link to="/products" className="hover-scale">
               <ShoppingBag className="mr-2" /> Explore
@@ -66,6 +68,9 @@ export const Header = () => {
                   {item.label}
                 </Link>
               ))}
+              <div className="pt-2">
+                <CartIcon />
+              </div>
             </div>
           </motion.div>
         )}

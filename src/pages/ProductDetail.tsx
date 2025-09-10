@@ -5,12 +5,27 @@ import { useMemo, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import BitcoinPayment from "@/components/BitcoinPayment";
 import QuantitySelector from "@/components/products/QuantitySelector";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
+import { ShoppingCart } from "lucide-react";
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
+  const { dispatch } = useCart();
+  const { toast } = useToast();
   const product = useMemo(() => products.find((p) => p.slug === slug), [slug]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch({ type: 'ADD_TO_CART', payload: { product, quantity } });
+      toast({
+        title: "Added to cart",
+        description: `${quantity}x ${product.name} added to your cart.`,
+      });
+    }
+  };
 
   if (!product) {
     return (
@@ -99,10 +114,22 @@ const ProductDetail = () => {
             </div>
 
             <div className="mt-8 space-y-4">
+              <div className="space-y-4">
+                <div className="flex gap-3">
+                  <Button onClick={handleAddToCart} className="flex-1">
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    Add to Cart
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link to="/cart">View Cart</Link>
+                  </Button>
+                </div>
+              </div>
+              
               <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
-                <h3 className="font-semibold text-primary mb-2">Payment Information</h3>
+                <h3 className="font-semibold text-primary mb-2">Quick Buy with Bitcoin</h3>
                 <p className="text-sm text-muted-foreground mb-3">
-                  We accept Bitcoin payments only. For other payment methods, please contact us.
+                  Skip the cart and pay directly with Bitcoin, or contact us for other payment methods.
                 </p>
                 <div className="flex gap-3">
                   <BitcoinPayment product={product} quantity={quantity} />
