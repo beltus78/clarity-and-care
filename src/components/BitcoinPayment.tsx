@@ -8,9 +8,10 @@ import { fetchBitcoinPrice, formatBitcoinAmount, formatCurrency } from "@/lib/cr
 
 interface BitcoinPaymentProps {
   product: Product;
+  quantity?: number;
 }
 
-const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
+const BitcoinPayment = ({ product, quantity = 1 }: BitcoinPaymentProps) => {
   const [copied, setCopied] = useState(false);
   const [btcPrice, setBtcPrice] = useState<number>(45000);
   const [isLoadingPrice, setIsLoadingPrice] = useState(false);
@@ -20,8 +21,9 @@ const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
   // Bitcoin wallet address - replace with your actual address
   const bitcoinAddress = "bc1qqefxjzllyzy550cs249dlsn9rq5c5xd4mr8l9z";
   
-  // Calculate Bitcoin amount using live price
-  const btcAmount = formatBitcoinAmount(product.price, btcPrice);
+  // Calculate Bitcoin amount using live price and quantity
+  const totalPrice = product.price * quantity;
+  const btcAmount = formatBitcoinAmount(totalPrice, btcPrice);
 
   const loadBitcoinPrice = async () => {
     setIsLoadingPrice(true);
@@ -76,7 +78,8 @@ const BitcoinPayment = ({ product }: BitcoinPaymentProps) => {
         <div className="space-y-4">
           <div className="text-center">
             <h3 className="font-semibold text-lg">{product.name}</h3>
-            <p className="text-2xl font-bold text-primary">£{product.price}</p>
+            {quantity > 1 && <p className="text-sm text-muted-foreground">Quantity: {quantity}</p>}
+            <p className="text-2xl font-bold text-primary">£{totalPrice}</p>
             <div className="flex items-center justify-center gap-2">
               <p className="text-sm text-muted-foreground">≈ {btcAmount} BTC</p>
               <Button

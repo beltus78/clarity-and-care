@@ -44,7 +44,10 @@ const ProductDetail = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold">{product.name}</h1>
-            <p className="mt-2 text-3xl font-bold text-primary">£{product.price}</p>
+            <div className="mt-2">
+              <p className="text-lg text-muted-foreground">£{product.price} each</p>
+              <p className="text-3xl font-bold text-primary">£{(product.price * quantity).toFixed(2)} total</p>
+            </div>
             <p className="mt-3 text-muted-foreground">{product.description}</p>
             
             <div className="mt-4">
@@ -102,7 +105,7 @@ const ProductDetail = () => {
                   We accept Bitcoin payments only. For other payment methods, please contact us.
                 </p>
                 <div className="flex gap-3">
-                  <BitcoinPayment product={product} />
+                  <BitcoinPayment product={product} quantity={quantity} />
                   <Button asChild variant="outline">
                     <Link to="/contact">Other Payment Methods</Link>
                   </Button>
