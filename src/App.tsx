@@ -13,6 +13,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
+          <WhatsAppWidget />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
